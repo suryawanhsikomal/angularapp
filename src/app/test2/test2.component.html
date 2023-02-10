@@ -1,0 +1,18 @@
+
+<p>test2 works!</p>
+
+<button (click)="onButtonClick()"> click me</button>
+
+
+<p>count:{{count}}</p>
+<input type="text" (keyup)="onKeyUp($event)">
+<h1>Two way databinding</h1>
+
+<input type="text" [(ngModel)]="firstName">
+
+  {{firstName}}
+   <p>User Name is: </p><input type ="text" [(ngModel)]="userName">
+   {{userName}}
+  
+  
+
