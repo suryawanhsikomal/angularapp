@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'angularapp';
   name = 'Komal';
 
+ parentToChild : string =" Hii  Dveloper this msg come from parent ";
   posts = [
     {
       title: 'Pam Tree',

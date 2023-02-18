@@ -1,0 +1,9 @@
+
+<button (click)="toggleButton()" type="button" class="btn btn-dark">Display Details</button>
+<p style="font-weight:bolder; color:maroon" *ngIf="displayDetails">This is Codemind Technology.
+     Your success partner.</p>
+<p style="font-weight:bolder; color:blueviolet">After Results: {{ buttonClicks }}</p>
+<div *ngFor="let click of buttonClicks; index as i">
+  <p [ngStyle]="{'background-color': (i >= 5) ? 'red' : 'lightgreen'}"
+     [ngClass]="{'text-white': (i >= 5)}">{{ click }}</p>
+</div>

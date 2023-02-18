@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ng-if.component.css']
 })
 export class NgIfComponent implements OnInit {
+  // post : any =true;
   posts = [
     {
       title: 'Neat Tree',
@@ -27,7 +28,7 @@ export class NgIfComponent implements OnInit {
       content: 'I swa this tree'
     }
   ]
-
+  
   showme: boolean = true;
   constructor() { }
 

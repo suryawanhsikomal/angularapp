@@ -1,0 +1,16 @@
+
+        <ng-container class="card" style="width: 18rem;" *ngFor="let course of  courses">
+            <img  class="card-img-top" [src]="course.iconUrl" alt="Card image map">
+            <div class="card-body">
+              <h5 class="card-title">{{ course.description}}</h5>
+              
+        <div [ngSwitch]="course.category">
+            <div  class="btn btn-info"  *ngSwitchCase="'INTERMIDIATE'">intermidicate</div>
+            <div  class="btn btn-primary" *ngSwitchCase="'BIGINNER'">Biginner</div>
+            <div class="btn btn-secondary"  *ngSwitchCase="'ADVANCE'">Advance</div>
+            <div class="btn btn-secondary"  *ngSwitchDefault>All cases</div>
+            
+        </div>
+            </div>
+          <ng-container>
+

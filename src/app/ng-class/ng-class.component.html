@@ -1,0 +1,11 @@
+<h4>ngClass Example</h4>
+<ul *ngFor="let person of  people">
+    <li [ngClass]="{
+      'text-sucess': person.div === 'A',
+      'text-primary': person.div === 'B',
+      'text-danger': person.div === 'C'
+    }">
+        {{person.name}}  {{person.div}}
+    </li>
+
+</ul>

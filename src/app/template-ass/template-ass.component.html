@@ -1,0 +1,102 @@
+<mat-card class="registrationForm">
+    <mat-card-title>
+       Registration Form
+    </mat-card-title>
+    <mat-card-content>
+        <form class="registrationForm" #registrationForm="ngForm">
+
+            <mat-form-field>
+                <input type="text" matInput ngModel
+                 name="fname" 
+                 id="fname"
+                 value="fname"
+                 minlength="5"
+                  maxlength="10"
+                   required 
+                   placeholder="first name"
+                   #fname="ngModel">
+                   <mat-error *ngIf="fname.errors?.minlength">
+                    your First name must have minimum {{password.errors?.minlength.requiredLength}} chars,
+                    but it only has {{fname.errors?.minlength.actualLength}}.
+                  </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="text" matInput ngModel
+                 name="lname"
+                  id="lname"
+                  value="lname"
+                   maxlength="15" 
+                   required 
+                   #lname="ngModel" 
+                   placeholder="last name">
+            </mat-form-field>
+
+            <select class="form-control" name="age" value="age">
+                <option *ngFor="let age of ages"  value="{{age}}">{{age}}</option>
+
+              </select>
+
+              <mat-form-field>
+                <input type="email" matInput ngModel
+                name="email"
+                value="email"
+                required
+                #email="ngModel"
+                placeholder="email-Id"
+                pattern="^[a-zA-Z0-9._%+-]+@codemindtechnology.com$">
+              </mat-form-field>
+             <br>
+              <mat-form-field>
+                <input type="tel"  name="phone" id="phone"  matInput ngModel
+                maxlength="10"
+                required
+                placeholder="Contact Number"
+                #contactNumber="ngModel">
+              </mat-form-field>
+
+              <select class="form-control" name="city" value="city" >
+                <option *ngFor="let city of cities"  value="{{city}}">{{city}}</option>
+              </select>
+
+              <div class="form-group" *ngFor="let gender of genders">
+
+                <input type="radio" name="gender" id="gender" value="{{gender.value}}" 
+                class="custom-control custom-radio">
+                <label for="{{gender.id}}">{{gender.value}}</label>
+              </div>
+
+              <mat-form-field>
+                <input type="password" matInput name="password" id="password" ngModel
+                minlength="8"
+                maxlength="20"
+                placeholder="password"
+                #password="ngModel"
+                required>
+                <mat-error *ngIf="password.errors?.minlength">
+                    your password must have minimum {{password.errors?.minlength.requiredLength}} chars,
+                    but it only has {{password.errors?.minlength.actualLength}}.
+                  </mat-error>
+
+              </mat-form-field><br>
+              <button  mat-raised-button color="primary" (click)="registration(registrationForm)">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<div>
+    <div class="row justify-content-center mt2" *ngIf="isSubmitted">
+        <div class="col-md-6 rounded shadow py-4">
+          <h2>Form Data</h2>
+          <p>First Name: <strong>{{formData.fname}}</strong></p>
+          <p>Last Name: <strong>{{formData.lname}}</strong></p>
+          <p>Age: <strong>{{formData.age}}</strong></p>
+          <p>Email-Id: <strong>{{formData.email}}</strong></p>
+          <p>Phone: <strong>{{formData.phone}}</strong></p>
+          <p>City: <strong>{{formData.city}}</strong></p>
+          <p>Gneder: <strong>{{formData.gender}}</strong></p>
+          <p>Password: <strong>{{formData.password}}</strong></p>
+     
+        </div>
+</div>
+</div>
