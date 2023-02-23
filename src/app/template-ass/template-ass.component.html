@@ -1,10 +1,11 @@
+
 <mat-card class="registrationForm">
     <mat-card-title>
        Registration Form
     </mat-card-title>
     <mat-card-content>
-        <form class="registrationForm" #registrationForm="ngForm">
-
+        <form class="registration-Form" #registrationForm="ngForm">
+          <!-- <h5>First Name  &nbsp;&nbsp;&nbsp;&nbsp;     Last Name </h5> -->
             <mat-form-field>
                 <input type="text" matInput ngModel
                  name="fname" 
@@ -12,31 +13,36 @@
                  value="fname"
                  minlength="5"
                   maxlength="10"
-                   required 
                    placeholder="first name"
+                   required fname
                    #fname="ngModel">
+                   <mat-error *ngIf="fname.errors?.required">Enter first name</mat-error>
+                 
                    <mat-error *ngIf="fname.errors?.minlength">
                     your First name must have minimum {{password.errors?.minlength.requiredLength}} chars,
                     but it only has {{fname.errors?.minlength.actualLength}}.
                   </mat-error>
             </mat-form-field>
-
+            
             <mat-form-field>
                 <input type="text" matInput ngModel
                  name="lname"
                   id="lname"
                   value="lname"
-                   maxlength="15" 
-                   required 
+                   maxlength="15"
                    #lname="ngModel" 
+                   required lname
                    placeholder="last name">
+                   <mat-error *ngIf="lname.errors?.required">Enter Last name</mat-error>
+                  
             </mat-form-field>
-
-            <select class="form-control" name="age" value="age">
-                <option *ngFor="let age of ages"  value="{{age}}">{{age}}</option>
-
-              </select>
-
+            <h5>select age:</h5>
+          <mat-form-field>
+            <input type="number" name="age"   matInput ngModel  #age="ngModel"  required pattern="(?:1[7-9]|20)">
+            <mat-error *ngIf="age.errors?.pattern">Enter age between 17 to 20 </mat-error>
+          </mat-form-field>
+           
+              <!-- <h5>Email Address:</h5> -->
               <mat-form-field>
                 <input type="email" matInput ngModel
                 name="email"
@@ -44,9 +50,17 @@
                 required
                 #email="ngModel"
                 placeholder="email-Id"
-                pattern="^[a-zA-Z0-9._%+-]+@codemindtechnology.com$">
+                pattern="^[a-zA-Z0-9._%+-]+@codemindtechnology.com$"  (blur)="checkemail(email)">
+
+                
+                <mat-error *ngIf="email.errors?.required">The email is mandatory</mat-error>
+                
+                <small class="text-danger" *ngIf="isEmailValid">Email domain not allowed</small>
+                <mat-error *ngIf="email.errors?.pattern">
+                   Enter Valid Domain like '******@codemindtechnology.com'</mat-error>
               </mat-form-field>
              <br>
+             <!-- <h5>Contact Number:</h5> -->
               <mat-form-field>
                 <input type="tel"  name="phone" id="phone"  matInput ngModel
                 maxlength="10"
@@ -54,18 +68,19 @@
                 placeholder="Contact Number"
                 #contactNumber="ngModel">
               </mat-form-field>
-
-              <select class="form-control" name="city" value="city" >
+              <h5>Select City:</h5>
+              <select class="form-control" name="city" value="city"  [ngModel]="defaultCity">
                 <option *ngFor="let city of cities"  value="{{city}}">{{city}}</option>
               </select>
+              <!-- <h5>Select Gender:</h5> -->
+             <br>
+             <div class="form-group" *ngFor="let gender of genders">
 
-              <div class="form-group" *ngFor="let gender of genders">
-
-                <input type="radio" name="gender" id="gender" value="{{gender.value}}" 
-                class="custom-control custom-radio">
-                <label for="{{gender.id}}">{{gender.value}}</label>
-              </div>
-
+              <input type="radio" name="gender" id="gender" value="{{gender.value}}" [ngModel]="defaultGender"
+              class="custom-control custom-radio">
+              <label for="{{gender.id}}">{{gender.value}}</label>
+            </div>
+              <!-- <h5>Password</h5> -->
               <mat-form-field>
                 <input type="password" matInput name="password" id="password" ngModel
                 minlength="8"
@@ -79,12 +94,20 @@
                   </mat-error>
 
               </mat-form-field><br>
+              <mat-form-field>
+                <input type="password" matInput name="confirm-pwd" id="confirm-pwd" ngModel
+                placeholder="confirm  password"
+                #password="ngModel"
+                required>
+              </mat-form-field>
               <button  mat-raised-button color="primary" (click)="registration(registrationForm)">Submit</button>
+
+
         </form>
     </mat-card-content>
 </mat-card>
 
-<div>
+
     <div class="row justify-content-center mt2" *ngIf="isSubmitted">
         <div class="col-md-6 rounded shadow py-4">
           <h2>Form Data</h2>
@@ -99,4 +122,5 @@
      
         </div>
 </div>
-</div>
+
+

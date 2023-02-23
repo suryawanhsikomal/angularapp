@@ -9,7 +9,8 @@ import { NgForm } from '@angular/forms';
 export class TemplateformComponent implements OnInit {
 
   
-
+  isSubmitted: boolean = false;
+  isEmailValid: boolean=  false;
   defaultValue = 'Angular';
   defaultGender = 'Male';
   courses: string[] = ['Angular', 'Javascript', 'Typescript'];
@@ -23,7 +24,7 @@ export class TemplateformComponent implements OnInit {
   ]
   emails='';
   formData: any;
-  isSubmitted: boolean;
+ 
   constructor() { }
 
   ngOnInit() {
@@ -46,7 +47,18 @@ form.controls['gender'].patchValue('Male');
 // POST api/ Saveuser(formData);
 
   }
+  checkemail(email){
+    console.log(email.value);
 
+    const domain = email.value.substring(email.value.lastIndexOf('@') + 1); // gmail.com
+    
+    if(domain.toLowerCase() === 'codemindtechnology.com') 
+    {
+      this.isEmailValid = false;
+    } else {
+      this.isEmailValid = true;
+    }
+  }
   
 }
 

@@ -29,7 +29,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
 import {  MatInputModule } from "@angular/material/input";
 import {  MatListModule } from "@angular/material/list";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatPaginatorModule, PageEvent } from "@angular/material/paginator";
 import {  MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -43,8 +43,10 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ClassAssComponent } from './class-ass/class-ass.component';
 import { TemplateformComponent } from './templateform/templateform.component';
-import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+
 import { TemplateAssComponent } from './template-ass/template-ass.component';
+import { ReactAssignComponent } from './react-assign/react-assign.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 
 @NgModule({
@@ -66,8 +68,9 @@ import { TemplateAssComponent } from './template-ass/template-ass.component';
     CustomDirective,
     ClassAssComponent,
     TemplateformComponent,
-    ReactiveformComponent,
     TemplateAssComponent,
+    ReactAssignComponent,
+    ReactiveFormComponent,
     
   
   ],
@@ -99,7 +102,8 @@ import { TemplateAssComponent } from './template-ass/template-ass.component';
     MatCheckboxModule,
     MatStepperModule,
     MatProgressBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

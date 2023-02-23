@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-left rounded shadow py-5">
+      <h2>Reactive Form</h2>
+      <form [FormGroup]="reactAssign" (ngSubmit)="OnSubmit()">
+        <div formGroupName="reactLogin">
+          <div class="form-group">
+            <label for="email"> Email Id: </label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="email-id"
+              id="email"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                !reactAssign.get('reactLogin.email').valid &&
+                reactAssign.get('reactLogin.email').touched
+              "
+              >Please enter valid email</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password"> password :</label>
+          <input
+            type="password"
+            placeholder="password"
+            formControlName="password"
+            class="form-control"
+            id="password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="datetime"> Date & time:</label>
+          <input
+            type="datetime"
+            formControlName="datetime"
+            class="form-control"
+            id="datetime"
+          />
+        </div>
+        <div class="form-group">
+          <label for="subscrption">Select subscription </label>
+          <select formControlName="subscription">
+            <option>Advance</option>
+            <option>Basic</option>
+            <option>pro</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="row justify-content-center mt-2" *ngIf="isSubmitted">
+        <div class="col-md-6 rounded shadow py4">
+          <h2>Form Data</h2>
+          <p>
+            Email Id:
+            <strong> {{ reactAssign.get("reactLogin.email").value }}</strong>
+          </p>
+          <p>
+            password: <strong> {{ reactAssign.get("password").value }}</strong>
+          </p>
+          <p>
+            Date & Time:
+            <strong> {{ reactAssign.get("datetime").value }}</strong>
+          </p>
+          <p>
+            Select subscription:<strong>
+              {{ reactAssign.get("subscription").value }}
+            </strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,9 +14,11 @@
                 #email="ngModel"
                 required email 
                 pattern="^[a-zA-Z0-9._%+-]+@codemindtechnology.com$"
-                placeholder="Email">
+                placeholder="Email"    (blur)="checkemail(email)">
 
                 <mat-error *ngIf="email.errors?.required">The email is mandatory</mat-error>
+                
+                <small class="text-danger" *ngIf="isEmailValid">Email domain not allowed</small>
                 <mat-error *ngIf="email.errors?.pattern">
                    Enter Valid Domain like '******@codemindtechnology.com'</mat-error>
               </mat-form-field>

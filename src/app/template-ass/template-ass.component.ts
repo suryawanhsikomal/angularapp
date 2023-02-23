@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-template-ass',
   templateUrl: './template-ass.component.html',
+               
   styleUrls: ['./template-ass.component.css']
+  
+   
 })
 export class TemplateAssComponent implements OnInit {
 
@@ -20,9 +25,12 @@ export class TemplateAssComponent implements OnInit {
     password:''
   
   }
-
-    ages : number[] = [ 17, 18, 19, 20];
-    cities :string[] = ['Mumbai', 'Kolkatata','Delhi','Pune','Mumbai'];
+  defaultage = '17'
+  defaultCity ='Mumbai';
+  defaultGender='Male';
+ 
+    // ages : number[] = [ 17, 18, 19, 20];
+    cities :string[] = ['Mumbai', 'Kolkatata','Delhi','Pune'];
    
 
 
@@ -39,23 +47,32 @@ export class TemplateAssComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   registration(form: NgForm) {
     this.isSubmitted = true;
 console.log(form);
 
+// form.controls['age'].setValue('17');
+form.controls['gender'].patchValue('Male');
+form.controls['city'].patchValue('Mumbai');
+form.controls['age'].patchValue('17');
 
-this.formData.fName = form.value.fName;
-this.formData.lName = form.value.lName;
-this.formData.ages = form.value.ages;
+this.formData.fname = form.value.fname;
+this.formData.lname = form.value.lname;
+this.formData.age = form.value.age;
 this.formData.email = form.value.email;
 this.formData.phone = form.value.phone;
-this.formData.cities = form.value.cities;
-this.formData.genders = form.value.genders;
+this.formData.city = form.value.city;
+this.formData.gender = form.value.gender;
 this.formData.password = form.value.password;
 // this.formData.confirmPass = form.value.confirmPass;
 }
+
+
+
+
 
 
 }
