@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6 text-left rounded shadow py-5">
       <h2>Reactive Form</h2>
-      <form [FormGroup]="reactAssign" (ngSubmit)="OnSubmit()">
+      <form [formGroup]="reactAssign" (ngSubmit)="OnSubmit()">
         <div formGroupName="reactLogin">
           <div class="form-group">
             <label for="email"> Email Id: </label>
@@ -32,44 +32,71 @@
             class="form-control"
             id="password"
           />
+          <small
+            class="text-danger"
+            *ngIf="
+              !reactAssign.get('password').valid &&
+              reactAssign.get('password').touched
+            "
+            >Please enter password</small
+          >
         </div>
 
         <div class="form-group">
-          <label for="datetime"> Date & time:</label>
+          <label for="date"> Date & time:</label>
           <input
-            type="datetime"
-            formControlName="datetime"
+            type="date"
+            formControlName="date"
             class="form-control"
-            id="datetime"
+            id="date"
           />
+          <small
+            class="text-danger"
+            *ngIf="
+              !reactAssign.get('date').valid && reactAssign.get('date').touched
+            "
+            >Please enter Date</small
+          >
         </div>
         <div class="form-group">
           <label for="subscrption">Select subscription </label>
-          <select formControlName="subscription">
+          <select formControlName="subscription" name="subscrption">
             <option>Advance</option>
             <option>Basic</option>
             <option>pro</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- <div>
+          <button type="submit" class="btn btn-primary" [disabled]="reactAssign.invalid && reactAssign.touched">Submit</button>
+          <small
+            class="text-danger"
+            *ngIf="reactAssign.invalid && reactAssign.touched"
+          >
+            Please Fill all required Fields
+          </small>
+        </div> -->
+        <div>
+            <button type="submit" class="btn btn-primary" [disabled]="reactAssign.invalid && reactAssign.touched">Submit</button>
+            <small class="alert alert-danger" *ngIf="reactAssign.invalid && reactAssign.touched">Please fill out all required fields correctly</small>
+          </div>
       </form>
       <div class="row justify-content-center mt-2" *ngIf="isSubmitted">
         <div class="col-md-6 rounded shadow py4">
           <h2>Form Data</h2>
           <p>
             Email Id:
-            <strong> {{ reactAssign.get('reactLogin.email').value }}</strong>
+            <strong> {{ reactAssign.get("reactLogin.email").value }}</strong>
           </p>
           <p>
-            password: <strong> {{ reactAssign.get('password').value }}</strong>
+            password: <strong> {{ reactAssign.get("password").value }}</strong>
           </p>
           <p>
             Date & Time:
-            <strong> {{ reactAssign.get('datetime').value }}</strong>
+            <strong> {{ reactAssign.get("date").value }}</strong>
           </p>
           <p>
             Select subscription:<strong>
-              {{ reactAssign.get('subscription').value }}
+              {{ reactAssign.get("subscription").value }}
             </strong>
           </p>
         </div>

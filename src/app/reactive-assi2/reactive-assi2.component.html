@@ -1,0 +1,210 @@
+<div style="display: inline-block;">
+  <img  style="margin-left:500px;" width="200px" alt="show image" src="https://i.pinimg.com/564x/84/77/49/847749560b5b8290f63622b241397cd2.jpg">
+</div>
+
+
+<mat-card class="userDetail">
+  <mat-card-title>
+   User Details
+  </mat-card-title>
+  <mat-card-content>
+    <!-- <div class="col-md-14 text-left rounded shadow py-5"> -->
+      <!-- <div class="col-md-18 text-left rounded shadow py-5"> -->
+    <form  class="form" [formGroup]="myReactiveForm1" (ngSubmit)="OnSubmit1()">
+      <!-- <h1> Account   Details </h1> -->
+     
+      <mat-form-field>
+      <div class="form-group">
+       
+          <!-- <label for="fullname">FullName</label> -->
+          <input type="text"    matInput  formControlName="fullname" class="form-control" id="fullname" placeholder="Full Name"
+          >
+          <mat-error *ngIf="!myReactiveForm1.get('fullname').valid && myReactiveForm1.get('fullname').touched">
+            Please enter fullname</mat-error>
+          
+      </div>
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <div class="form-group">
+          <label for="date"> Date</label>
+          <input
+            type="date" matInput
+            formControlName="date"
+            class="form-control"
+            id="date"
+          />
+        </div>
+      </mat-form-field> -->
+
+      <div class="from-control">
+        <mat-form-field>
+          <input matInput type="date" name="date" placeholder="Your Birthday" formControlName="dateOfBirth">
+
+          <mat-error *ngIf="!myReactiveForm.get('date').valid &&
+          myReactiveForm.get('date').touched">
+            Date of Birth required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+        <mat-form-field>
+          <label for="gender"> Gender</label>
+          <br>
+          <select matInput>
+            <option>  Male </option>
+            <option>  Female </option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label for="country"> Country</label>
+          <br>
+          <select matInput>
+            <option>  India 356</option>
+            <option> Brazil 076 </option>
+            <option>  China 156</option>
+            <option> Australia 036 </option>
+            <option>Venezuela 862</option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <div class="form-group">
+              <!-- <label for="phone">Phone</label> -->
+              <input type="text"    matInput  formControlName="phone" class="form-control" id="phone" placeholder="Phone Number"
+              >
+              <small class="text-danger" *ngIf="!myReactiveForm1.get('phone').valid && myReactiveForm1.get('phone').touched">Please enter Valid Phone Number</small>
+              
+          </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <div class="form-group">
+              <label for="bio">Bio
+              <textarea rows="5" cols="25"></textarea>
+              <br>
+              <small class="text" *ngIf="!myReactiveForm1.get('phone').valid">Tell us about yourself</small>
+              <br>
+            </label>
+            
+            </div>
+
+          </mat-form-field>
+         
+          <div>
+            <button type="submit" class="btn btn-primary"  [disabled]="myReactiveForm1.invalid && myReactiveForm1.touched">Submit</button>
+            <small class="text-danger" *ngIf="myReactiveForm1.invalid && myReactiveForm1.touched">Please fill out all required fields correctly</small>
+           </div>
+
+    </form>
+  <!-- </div> -->
+    <!-- </div> -->
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<mat-card class="userform">
+  <mat-card-title>
+    Account   Details 
+  </mat-card-title>
+  <mat-card-content>
+    <div class="col-md-18 text-left rounded shadow py-5">
+            <form  class="form1" [formGroup]="myReactiveForm" (ngSubmit)="OnSubmit()">
+               
+                <mat-form-field>
+                <div class="form-group">
+                    <!-- <label for="username">Username</label> -->
+                    <input type="text"     matInput  formControlName="username" class="form-control" id="username" placeholder="Enter user name"
+                    >
+                    <small class="text-danger" *ngIf="!myReactiveForm.get('username').valid && myReactiveForm.get('username').touched">Please enter username</small>
+                    
+                </div>
+                </mat-form-field>
+                <mat-form-field>
+                <div class="form-group">
+                    <!-- <label for="email">Email</label> -->
+                    <input type="text"  matInput formControlName="email" class="form-control" id="email" placeholder= "email address">
+                    <!-- <mat-error class="error-message" *ngIf="myReactiveForm.get('email').hasError(validation.type) && (myReactiveForm.get('email').dirty || myReactiveForm.get('email').touched)">please enter valid email</mat-error> -->
+                    <small class="text-danger" *ngIf="!myReactiveForm.get('email').valid && myReactiveForm.get('email').touched">Please enter valid email</small>
+                </div>
+              </mat-form-field>
+              <mat-form-field>
+                <div class="form-group">
+                    <!-- <label for="password"> password :</label> -->
+                    <input
+                      type="password"  matInput
+                      placeholder="password"
+                      formControlName="password"
+                      class="form-control"
+                      id="password"
+                    />
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                        !myReactiveForm.get('password').valid &&
+                        myReactiveForm.get('password').touched
+                      "
+                      >Please enter password</small
+                    >
+                  </div>
+              </mat-form-field>
+              <mat-form-field>
+                  <div class="form-group">
+                    <!-- <label for="password"> Confirm password :</label> -->
+                    <input
+                      type="password"  matInput
+                      placeholder=" Re-Enter password"
+                      formControlName="cpassword"
+                      class="form-control"
+                      id="cpassword"
+                    />
+                    <!-- <small
+                      class="text-danger"
+                      *ngIf="
+                        !myReactiveForm.get('password').valid &&
+                        myReactiveForm.get('password').touched
+                      "
+                      > please confirm password</small
+                    > -->
+                  </div>
+              </mat-form-field>
+                  <!-- <h1> validation</h1> -->
+                  <mat-form-field>
+                    <input type="checkbox"> <small> I accept term and condition</small>
+                  </mat-form-field>
+                  
+                
+                  <br>
+                   <div>
+                    <button type="submit" class="btn btn-primary"  [disabled]="myReactiveForm.invalid && myReactiveForm.touched">Submit</button>
+                    <small class="text-danger" *ngIf="myReactiveForm.invalid && myReactiveForm.touched">Please fill out all required fields correctly</small>
+                   </div>
+                  
+            </form>
+    </div>
+          </mat-card-content>
+</mat-card>
+
+                

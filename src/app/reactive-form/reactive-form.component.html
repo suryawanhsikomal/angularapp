@@ -8,11 +8,27 @@
                     <label for="username">Username</label>
                     <input type="text" formControlName="username" class="form-control" id="username" placeholder="Enter user name"
                     >
+                    <small class="text-danger" *ngIf="!myReactiveForm.get('userDeatils.username').valid && 
+                    myReactiveForm.get('userDeatils.username').touched">
+                        
+                    <span *ngIf="myReactiveForm.get('userDeatils.username').errors['required']">
+                        User name not valid
+                    </span>
+                    <span *ngIf="myReactiveForm.get('userDeatils.username').errors['namesNotAllowed']">
+                        {{myReactiveForm.get('userDeatils.username').value}} is not allowed
+                    </span>
+                    </small>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" formControlName="email" class="form-control" id="email" placeholder="Enter email address">
                     <small class="text-danger" *ngIf="!myReactiveForm.get('userDeatils.email').valid && myReactiveForm.get('userDeatils.email').touched">Please enter valid email</small>
+                    <span *ngIf="myReactiveForm.get('userDeatils.username').errors['required']">
+                        User name not valid
+                    </span>
+                    <span *ngIf="myReactiveForm.get('userDeatils.email').errors['namesNotAllowed']">
+                        {{myReactiveForm.get('userDeatils.email').value}} is not allowed
+                    </span>
                 </div>
             </div>
 
@@ -30,6 +46,16 @@
                    Female:<input type="radio" formControlName="Gender" name="Gender" value="Female" checked><br>
                    Male: <input  type="radio" formControlName="Gender" name="Gender" value="Male">
                 </div>
+                <div class="formgroup" formArrayName="skills">
+                    <label>Skills</label>
+                    <ng-container *ngFor="let skill of myReactiveForm.get('skills').controls; index as i">
+                        <input type="text" class="form-control" formControlName="{{i}}" placeholder="Add Skills">
+                        
+                    </ng-container>
+                    
+                    <button class="btn btn-light btn-small mt-4 btn-add" (click)="OnAddSkills()"><i>+</i>Add Skills</button>
+                    
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
@@ -38,7 +64,7 @@
                   <h2>Form Data</h2>
                   <p>Username: <strong>  {{ myReactiveForm.get('userDeatils.username').value}}</strong></p>
                   <p>Email: <strong>  {{ myReactiveForm.get('userDeatils.email').value}}</strong></p>
-                  <p>Course: <strong>  {{ myReactiveForm.get('courses').value}}</strong></p>
+                  <p>Course: <strong>  {{ myReactiveForm.get('course').value}}</strong></p>
                   <p>Gender: <strong>{{ myReactiveForm.get('Gender').value}} </strong></p>
 
                 </div>
@@ -46,3 +72,8 @@
         </div>
     </div>
 </div>
+
+<input type="date" [(ngModel)]="age">
+<button type="button" (click)="ageCalculator()">Calculate</button>
+
+<p *ngIf="age"> {{showAge}} </p>

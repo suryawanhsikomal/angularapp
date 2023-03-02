@@ -1,0 +1,23 @@
+.userform {
+    max-width: 700px;
+    margin: 50px auto 0 auto;
+    display:inline-block;
+}
+ .userDetail{
+    max-width: 900px;
+    margin: 100px auto 0 auto;
+    display:inline-block;
+ }
+
+.form1,.form{
+    display: flex;
+    flex-direction: column;
+    background-color:antiquewhite;
+     
+}
+
+/* input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched{
+    border: 1px solid red;
+    box-shadow: 0 0 13px #ff000021;
+} */

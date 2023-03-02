@@ -23,7 +23,7 @@ export class ReactAssignComponent implements OnInit {
         'email': new FormControl(null, [Validators.email, Validators.required])
       }),
       'password': new  FormControl(null, Validators.required),
-       'datetime' : new FormControl(Validators.required),
+       'date' : new FormControl(null, Validators.required),
         'subscription' : new FormControl('Advance'),
      });
     

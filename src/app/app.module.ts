@@ -47,6 +47,7 @@ import { TemplateformComponent } from './templateform/templateform.component';
 import { TemplateAssComponent } from './template-ass/template-ass.component';
 import { ReactAssignComponent } from './react-assign/react-assign.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ReactiveAssi2Component } from './reactive-assi2/reactive-assi2.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     TemplateAssComponent,
     ReactAssignComponent,
     ReactiveFormComponent,
+    ReactiveAssi2Component,
     
   
   ],
