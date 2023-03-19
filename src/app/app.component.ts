@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Emplyee } from './models/employee';
+import { RapidapiService } from './services/rapidapi.service';
+// import { Emplyee } from './models/employee';
+// import { DemoServiceService } from './services/demo-service.service';
+// import { MyServiceService } from './services/my-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  implements OnInit{
   test ='Prperty binding variable';
   title = 'angularapp';
   name = 'Komal';
@@ -29,8 +33,18 @@ export class AppComponent {
     imageUrl:'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg',
     
   }
-  constructor(){
+  financeData;
+  // demoServiceService: any;
+  constructor( private rapidapiService : RapidapiService){
     this.getValueFromServer();
+  }
+  ngOnInit() {
+    this.rapidapiService.getFinance().subscribe(res=>{
+      console.log('rapid responce', res);
+      this.financeData = res;
+      
+    })
+    
   }
   getValueFromServer(){
     this.empCount = 100;
@@ -53,4 +67,6 @@ export class AppComponent {
     console.log('From the child to parent all details of user are',val);
     
    }
+   
+   
 } 

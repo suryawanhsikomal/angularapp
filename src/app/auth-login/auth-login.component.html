@@ -1,0 +1,9 @@
+<p>Auth login page</p>
+
+
+<input type="email" placeholder="email id" #username><br>
+<input type="password" placeholder="pwd" #password><br><br>
+<button type="submit" class="btn btn-primary" (click)="login(username.value, password.value)">Login</button>
+
+
+<span>{{msg}}</span>

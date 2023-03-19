@@ -1,0 +1,39 @@
+<!-- <br>
+ <ng-container *ngFor="let item of items">
+  Product Name : <strong class="text-success">{{item.name}}</strong> 
+  Product Id : <strong class="text-success">{{item.id}}</strong><br>
+
+  </ng-container>  -->
+ 
+
+
+  <label for="serch"> Search by product name</label>
+  <input type="text" class="form-control" placeholder="Enter 
+  product Name" [(ngModel)]="namefind">
+
+<h4 style="text-align: center;color:rgb(145, 76, 27);"><i>Users Data</i></h4>
+<table class="table table-success table-striped">
+
+<thead style="background-color: rgb(228, 110, 211);">
+    
+  <th>Id</th>
+  <th>Name</th>
+  <th>UserName</th> 
+  <th>Email</th>
+  <th>Address</th>
+  <th>Phone</th>
+  <th>Website</th>
+</thead>
+<tbody>
+<tr *ngFor="let result of users  | search:namefind">
+<td>{{result.id}} </td>
+<td>{{result.name}}</td>
+<td>{{result.username}}</td>
+<td>{{result.email}}</td>
+<td>{{result.address.street +','+ result.address.suite+','+ result.address.city +','+result.address.zipcode }}</td>
+  <td>{{result.phone}}</td>
+  <td>{{result.website}}</td>
+</tr>
+ </tbody> 
+  
+</table>

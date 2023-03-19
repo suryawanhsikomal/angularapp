@@ -1,0 +1,24 @@
+<p>wiki works!</p>
+<button  class="btn btn-primary" (click)="getData()">Get Wiki Data</button>
+
+<label for="serch"> Search </label>
+<input type="text" class="form-control"  [(ngModel)]="searchTerm">
+<h4 style="text-align: center;color:rgb(145, 76, 27);"><i>Users Data</i></h4>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>wordcount</th>
+            <th> snippet   </th>
+            <th>  title   </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let details of searchData">
+        
+        <td>{{details.wordcount}}</td>
+        <td  [innerHTML]="details.snippet"></td>
+        <!-- <td  [innerHTML]="details.snippet.query.search;"></td> -->
+        <td>{{details.title}}</td>
+        </tr>
+    </tbody>
+</table>

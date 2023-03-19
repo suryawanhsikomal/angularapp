@@ -1,0 +1,26 @@
+<p>users works!</p>
+<p>demopost works!</p>
+<div>
+    <div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let details of userDetail">
+                    <td><a [routerLink]="['/userdetails',details.id]">{{details.id}}</a></td>
+                    <td>{{details.name}}</td>
+                    <td>{{details.username}}</td>
+                    <td>{{details.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+    </div>
+</div>
